@@ -6775,6 +6775,12 @@ var CloudformationSchema = `{
                 "ReadonlyRootFilesystem": {
                     "type": "boolean"
                 },
+                "ResourceRequirements": {
+                    "items": {
+                        "$ref": "#/definitions/AWS::Batch::JobDefinition.ResourceRequirement"
+                    },
+                    "type": "array"
+                },
                 "Ulimits": {
                     "items": {
                         "$ref": "#/definitions/AWS::Batch::JobDefinition.Ulimit"
@@ -6864,6 +6870,18 @@ var CloudformationSchema = `{
             "required": [
                 "TargetNodes"
             ],
+            "type": "object"
+        },
+        "AWS::Batch::JobDefinition.ResourceRequirement": {
+            "additionalProperties": false,
+            "properties": {
+                "Type": {
+                    "type": "string"
+                },
+                "Value": {
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "AWS::Batch::JobDefinition.RetryStrategy": {
@@ -43581,10 +43599,6 @@ var CloudformationSchema = `{
                     "type": "string"
                 }
             },
-            "required": [
-                "Key",
-                "Value"
-            ],
             "type": "object"
         }
     },

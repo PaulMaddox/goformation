@@ -6775,6 +6775,12 @@ var SamSchema = `{
                 "ReadonlyRootFilesystem": {
                     "type": "boolean"
                 },
+                "ResourceRequirements": {
+                    "items": {
+                        "$ref": "#/definitions/AWS::Batch::JobDefinition.ResourceRequirement"
+                    },
+                    "type": "array"
+                },
                 "Ulimits": {
                     "items": {
                         "$ref": "#/definitions/AWS::Batch::JobDefinition.Ulimit"
@@ -6864,6 +6870,18 @@ var SamSchema = `{
             "required": [
                 "TargetNodes"
             ],
+            "type": "object"
+        },
+        "AWS::Batch::JobDefinition.ResourceRequirement": {
+            "additionalProperties": false,
+            "properties": {
+                "Type": {
+                    "type": "string"
+                },
+                "Value": {
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "AWS::Batch::JobDefinition.RetryStrategy": {
@@ -44527,10 +44545,6 @@ var SamSchema = `{
                     "type": "string"
                 }
             },
-            "required": [
-                "Key",
-                "Value"
-            ],
             "type": "object"
         }
     },
